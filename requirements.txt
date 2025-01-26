@@ -1,0 +1,8 @@
+streamlit
+pathlib
+appdirs
+yfinance
+numpy
+scipy
+seaborn
+matplotlib
