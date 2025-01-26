@@ -1,6 +1,17 @@
 import streamlit as st
+from pathlib import Path
+
 import appdirs as ad
-ad.user_cache_dir = lambda *args: "/tmp"
+
+CACHE_DIR = ".cache"
+
+# Force appdirs to say that the cache dir is .cache
+ad.user_cache_dir = lambda *args: CACHE_DIR
+
+# Create the cache dir if it doesn't exist
+Path(CACHE_DIR).mkdir(exist_ok=True)
+
+import yfinance as yf
 import yfinance as yf
 import numpy as np
 from math import exp, sqrt, log
@@ -19,7 +30,7 @@ if "strike_price" not in st.session_state:
 # Add Custom CSS for Styling
 st.markdown(
     """
-    <style>
+    <style>s
         .stApp { background-color: #f4f4f4; font-family: 'Arial', sans-serif; }
         h1 { color: #000000; font-family: 'Courier New', Courier, monospace; text-align: center; margin-bottom: 20px; }
         .price-box { 
